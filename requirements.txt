@@ -1,0 +1,6 @@
+pandas==1.2.5
+streamlit==1.16.0
+catboost==1.2.2
+xgboost==1.7.5
+lightgbm==3.3.5
+scikit-learn==1.0.2
