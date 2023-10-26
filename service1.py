@@ -49,7 +49,7 @@ def objective_regress(trial,chosen=mission_type):
     params = {
         # "learning_rate":trial.suggest_float("learning_rate", 1e-4, 1e-1, log=True),
         # "n_estimators":trial.suggest_int("n_estimators", 1000, 8000),
-        "max_depth": trial.suggest_categorical('max_depth', [6, 7, 8, 9, 10, 11, 13, 15, 17, 21, 25, 29]),
+        "max_depth": trial.suggest_categorical('max_depth', [6, 7, 8, 9, 10, 11, 13, 15, 17, 21]),
     }
 
     sc = 0
@@ -120,7 +120,7 @@ if uploaded_file is not None:
                 mse = mean_squared_error((y_test, model.predict(X_test)))
                 st.write("mse:", mse)
                 study = optuna.create_study(direction='minimize')
-                study.optimize(objective_regress(), n_trials=10)
+                study.optimize(objective_regress(), n_trials=3)
                 st.write(study.best_params)
                 model1 =xgboost.XGBRegressor(**study.best_params)
                 model1.fit(X_train, y_train)
@@ -136,7 +136,7 @@ if uploaded_file is not None:
                 mse = mean_squared_error((y_test, model.predict(X_test)))
                 st.write("mse:", mse)
                 study = optuna.create_study(direction='minimize')
-                study.optimize(objective_regress(), n_trials=10)
+                study.optimize(objective_regress(), n_trials=3)
                 st.write(study.best_params)
                 model1 =lightgbm.LGBMRegressor(**study.best_params)
                 model1.fit(X_train, y_train)
@@ -152,7 +152,7 @@ if uploaded_file is not None:
                 mse = mean_squared_error((y_test, model.predict(X_test)))
                 st.write("mse:", mse)
                 study = optuna.create_study(direction='minimize')
-                study.optimize(objective_regress(), n_trials=10)
+                study.optimize(objective_regress(), n_trials=3)
                 st.write(study.best_params)
                 model1 = catboost.CatBoostRegressor(**study.best_params)
                 model1.fit(X_train, y_train)
@@ -169,7 +169,7 @@ if uploaded_file is not None:
                 f1_macro = f1_score(y_test, model.predict(X_test), average="macro")
                 acc = accuracy_score(y_test, model.predict(X_test))
                 study = optuna.create_study(direction='maximize')
-                study.optimize(objective, n_trials=10)
+                study.optimize(objective, n_trials=3)
                 st.write(study.best_params)
                 st.write("f1:", f1_macro)
                 st.write("acc", acc)
@@ -187,7 +187,7 @@ if uploaded_file is not None:
                 f1_macro = f1_score(y_test, model.predict(X_test), average="macro")
                 acc = accuracy_score(y_test, model.predict(X_test))
                 study = optuna.create_study(direction='maximize')
-                study.optimize(objective, n_trials=10)
+                study.optimize(objective, n_trials=3)
                 st.write(study.best_params)
                 st.write("f1:", f1_macro)
                 st.write("acc", acc)
@@ -205,7 +205,7 @@ if uploaded_file is not None:
                 f1_macro = f1_score(y_test, model.predict(X_test), average="macro")
                 acc = accuracy_score(y_test, model.predict(X_test))
                 study = optuna.create_study(direction='maximize')
-                study.optimize(objective, n_trials=10)
+                study.optimize(objective, n_trials=3)
                 st.write(study.best_params)
                 st.write("f1:", f1_macro)
                 st.write("acc", acc)
