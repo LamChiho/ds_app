@@ -169,7 +169,7 @@ if uploaded_file is not None:
                         study = optuna.create_study(direction='minimize')
 
                         # Optimize hyperparameters
-                        study.optimize(objective, n_trials=15)
+                        study.optimize(objective, n_trials=3)
 
                         # Get the best hyperparameters
                         best_params = study.best_params
@@ -227,7 +227,7 @@ if uploaded_file is not None:
                         study = optuna.create_study(direction='minimize')
 
                         # Optimize hyperparameters
-                        study.optimize(objective, n_trials=30)
+                        study.optimize(objective, n_trials=3)
 
                         # Get the best hyperparameters
                         best_params = study.best_params
