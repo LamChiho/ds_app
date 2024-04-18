@@ -5,3 +5,4 @@ xgboost==1.7.5
 lightgbm==3.3.5
 scikit-learn==1.0.2
 seaborn==0.13.2
+optuna==3.6.1
